@@ -1,3 +1,37 @@
+
+$(document).ready(function() {
+});
+
+$("#currentDay").append(today) // Adds current day/date at top of Calendar.
+
+
+// Time block background colors for past(gray), present(red) and future(green)
+
+let taskInput = $(".row textarea[type=text]");   // Entering task in appropriate hour block.
+
+$(taskInput).each(function() {       
+
+    /* Creates a for loop though each row class for the ID of each textarea div.(https://api.jquery.com/each/#each-function) */
+
+    const taskInputNumber = parseInt($(this).attr("id")); // ID corresponds to the hour number in military time. (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
+
+    //Compares textarea ID to current hour; adds the appropriate background color.
+
+    if (taskInputNumber < currentHour) {
+        $(this).addClass("past")
+    }
+
+    else if (taskInputNumber == currentHour) {
+        $(this).addClass("present")
+    }
+
+    else if (taskInputNumber > currentHour) {
+        $(this).addClass("future")
+    }
+});
+
+//Save task data provided by user when clicking Save button.
+
 $(".saveBtn").click(function() {
     event.preventDefault();
 
@@ -17,4 +51,4 @@ $("#13").val(localStorage.getItem("13"))
 $("#14").val(localStorage.getItem("14"))
 $("#15").val(localStorage.getItem("15"))
 $("#16").val(localStorage.getItem("16"))
-$("#17").val(localStorage.getItem("17"))
+$("#17").val(localStorage.getItem("17")) 
