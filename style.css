@@ -51,6 +51,7 @@ textarea{
 
 .hour-column-left {
   font-size: 20px;
+  min-width: 3.5rem;
 }
 
 .past {
