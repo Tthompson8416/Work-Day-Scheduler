@@ -2,20 +2,16 @@
 $(document).ready(function() {
 });
 
-$("#currentDay").append(today) // Adds current day/date at top of Calendar.
+$("#currentDay").append(today) 
 
 
 // Time block background colors for past(gray), present(red) and future(green)
 
-let taskInput = $(".row textarea[type=text]");   // Entering task in appropriate hour block.
-
+let taskInput = $(".row textarea[type=text]"); 
 $(taskInput).each(function() {       
 
-    /* Creates a for loop though each row class for the ID of each textarea div.(https://api.jquery.com/each/#each-function) */
 
-    const taskInputNumber = parseInt($(this).attr("id")); // ID corresponds to the hour number in military time. (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt)
-
-    //Compares textarea ID to current hour; adds the appropriate background color.
+    const taskInputNumber = parseInt($(this).attr("id")); 
 
     if (taskInputNumber < currentHour) {
         $(this).addClass("past")
@@ -30,18 +26,18 @@ $(taskInput).each(function() {
     }
 });
 
-//Save task data provided by user when clicking Save button.
+//Save task data input by user when save button is clicked.
 
 $(".saveBtn").click(function() {
     event.preventDefault();
 
-    let hrTask = $(this).attr("hour")      // Corresponds to the key referenced for localStorage - also same as hour in military time.
-    let storeTask = $(this).prev().val();  // Previous sibling https://api.jquery.com/prev/ (in this case previous sibling is the textarea, value is the text entered.)
+    let hrTask = $(this).attr("hour")    
+    let storeTask = $(this).prev().val(); 
 
     localStorage.setItem(hrTask, JSON.stringify(storeTask));
 });
 
-// Recall tasks from localStorage back into scheduler when renavigating to the page or when page is refreashed.
+// Recall tasks from localStorage after refreshing page
 
 $("#9").val(localStorage.getItem("9"))
 $("#10").val(localStorage.getItem("10"))
