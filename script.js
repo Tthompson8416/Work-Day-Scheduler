@@ -1,3 +1,6 @@
+var currentHour = 1;
+var currentHour = moment().hours()
+
 
 $(document).ready(function() {
 });
@@ -11,11 +14,11 @@ let taskInput = $(".row textarea[type=text]");
 $(taskInput).each(function() {       
 
 
-    const taskInputNumber = parseInt($(this).attr("id")); 
+const taskInputNumber = parseInt($(this).attr("id")); 
 
-    if (taskInputNumber < currentHour) {
-        $(this).addClass("past")
-    }
+ if (taskInputNumber < currentHour) {
+     $(this).addClass("past")
+ }
 
     else if (taskInputNumber == currentHour) {
         $(this).addClass("present")
